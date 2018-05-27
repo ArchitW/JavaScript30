@@ -57,3 +57,35 @@ addItems.addEventListener("submit", addItem);
 itemsList.addEventListener("click", toggleDone);
 
 populateList(items, itemsList);
+
+const checkButton = document.querySelector("[data-check");
+const uncheckButton = document.querySelector("[data-uncheck");
+const clearButton = document.querySelector("[data-clear");
+
+function checkAll(e) {
+  e.preventDefault();
+  items.forEach(item => {
+    if (item.done === false) {
+      item.done = true;
+      updateListAndLocalStorage(items, itemsList);
+    }
+  });
+}
+function uncheckAll(e) {
+  e.preventDefault();
+  items.forEach(item => {
+    if (item.done === true) {
+      item.done = false;
+      updateListAndLocalStorage(items, itemsList);
+    }
+  });
+}
+function clearAll(e) {
+  e.preventDefault();
+  localStorage.removeItem("items");
+  itemsList.innerHTML = "";
+}
+
+checkButton.addEventListener("click", checkAll);
+uncheckButton.addEventListener("click", uncheckAll);
+clearButton.addEventListener("click", clearAll);
