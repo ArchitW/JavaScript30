@@ -1,7 +1,9 @@
 const panels = document.querySelectorAll(".panel");
-
+var lastActive;
 function toggleOpen() {
   this.classList.toggle("open");
+  lastActive ? lastActive.classList.remove("open") : null;
+  lastActive = document.querySelector(".open");
 }
 
 function toggleActive(e) {
